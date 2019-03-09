@@ -1,3 +1,4 @@
+#!/usr/bin/env python
 from flask import Flask, request, redirect, url_for
 
 from Question3db import get_posts
