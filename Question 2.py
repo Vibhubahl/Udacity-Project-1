@@ -8,48 +8,27 @@ app = Flask(__name__)
 HTML_WRAP = '''\
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Articles Views</title>
-    <style>
-    	body
-    	{
-    		background-color:white;
-    		color:black;
-    	}
-      	h1 
-      	{ 
-      		text-align: center; 
-      	}
-    </style>
-  </head>
-  <body>
-  <h1>Question 2</h1>
-  <table border "1px" align="center">
-    <tr>
-    <td width="250px" height="auto">Name</td>
-    <td width="250px" height="auto">Views</td>
-    </tr>
-  </table>
+    <head>
+        <title>POPULAR AUTHORS</title>
+    </head>
+    <body>
+    MOST POPULAR AUTHORS <br>
 %s
-  </body>
+    </body>
 </html>
 '''
 POST = '''\
-  	<table border="1px" align="center">
-  	<tr>
-  	<td width="250px" height="auto">%s</td>
-  	<td width="250px" height="auto">%s</td>
-  	</tr>
+        %s &nbsp; -&nbsp; %s&nbsp; views<br>
 '''
 
 
 @app.route('/', methods=['GET'])
 def main():
-  '''Main page of the forum.'''
-  posts = "".join(POST % (name,num) for name,num in get_posts())
-  html = HTML_WRAP % posts
-  return html
+    '''Main page of the forum.'''
+    posts = "".join(POST % (name, num) for name, num in get_posts())
+    html = HTML_WRAP % posts
+    return html
+
 
 if __name__ == '__main__':
-  app.run(host='0.0.0.0', port=8000)
-
+    app.run(host='0.0.0.0', port=8000)
